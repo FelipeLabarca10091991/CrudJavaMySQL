@@ -57,6 +57,11 @@ public class FormAlumno1 extends javax.swing.JFrame {
         });
 
         btnSave.setText("Guardar");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
 
         btnEdit.setText("Modificar");
 
@@ -178,6 +183,11 @@ public class FormAlumno1 extends javax.swing.JFrame {
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIdActionPerformed
+
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        CAlumnos objetoAlumno = new CAlumnos();
+        objetoAlumno.insertarAlumno(txtNames, txtLastNames);
+    }//GEN-LAST:event_btnSaveActionPerformed
 
     /**
      * @param args the command line arguments

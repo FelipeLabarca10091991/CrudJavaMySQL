@@ -27,6 +27,13 @@ public class CConection {
             JOptionPane.showMessageDialog(null,"Error a conectarse en la bd. Error:"+ e.toString());
         }
         return conectar;
+        
+        
     }
+      
+    
+    
+    
+    
     
 }

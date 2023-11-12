@@ -12,6 +12,7 @@ import javax.swing.JTextField;
 
 public class CAlumnos {
     
+    int a;
     int id; 
     String NombreAlumno; 
     String ApellidoAlumno; 

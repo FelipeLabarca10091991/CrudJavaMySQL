@@ -15,6 +15,15 @@ public class FormAlumno1 extends javax.swing.JFrame {
      */
     public FormAlumno1() {
         initComponents();
+        
+        //Para centrar el formulario
+        this.setLocationRelativeTo(null);
+        
+        //Desactivar el campo ID para no ser modificado. 
+        txtId.setEnabled(false);
+        
+        Alumnos objAlumnos = new Alumnos();
+        objAlumnos.mostrarAlumnos(dbAlumnos);
     }
 
     /**
@@ -64,6 +73,11 @@ public class FormAlumno1 extends javax.swing.JFrame {
         });
 
         btnEdit.setText("Modificar");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
 
         btnDelete.setText("Eliminar");
         btnDelete.addActionListener(new java.awt.event.ActionListener() {
@@ -133,6 +147,11 @@ public class FormAlumno1 extends javax.swing.JFrame {
 
             }
         ));
+        dbAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                dbAlumnosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(dbAlumnos);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -177,17 +196,36 @@ public class FormAlumno1 extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        // TODO add your handling code here:
+        Alumnos objAlumno = new Alumnos();
+        objAlumno.eliminarAlumno(txtId);
+        objAlumno.mostrarAlumnos(dbAlumnos);
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void txtIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtIdActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        CAlumnos objetoAlumno = new CAlumnos();
-        objetoAlumno.insertarAlumno(txtNames, txtLastNames);
+        
+        Alumnos objAlumno = new Alumnos();
+        objAlumno.insertarAlumno(txtNames, txtLastNames);
+        objAlumno.mostrarAlumnos(dbAlumnos);
+        
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void dbAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dbAlumnosMouseClicked
+        
+        Alumnos objAlumno = new Alumnos();
+        objAlumno.seleccionarAlumno(dbAlumnos, txtId, txtNames, txtLastNames);
+    }//GEN-LAST:event_dbAlumnosMouseClicked
+
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        
+        Alumnos objAlumno = new Alumnos();
+        objAlumno.modificarAlumno(txtId, txtNames, txtLastNames);
+        objAlumno.mostrarAlumnos(dbAlumnos);
+    }//GEN-LAST:event_btnEditActionPerformed
 
     /**
      * @param args the command line arguments

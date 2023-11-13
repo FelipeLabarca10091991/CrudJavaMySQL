@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import javax.swing.JOptionPane;
 
-public class CConection {
+public class Conexion {
     
     Connection conectar = null; 
     
@@ -21,7 +21,7 @@ public class CConection {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
             conectar = DriverManager.getConnection(cadena,usuario, password);
-            JOptionPane.showMessageDialog(null,"La conexión se ha realizado con éxito");
+            //JOptionPane.showMessageDialog(null,"La conexión se ha realizado con éxito");
             
         }catch(Exception e){
             JOptionPane.showMessageDialog(null,"Error a conectarse en la bd. Error:"+ e.toString());
